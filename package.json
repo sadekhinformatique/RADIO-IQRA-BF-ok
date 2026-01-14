@@ -1,5 +1,5 @@
 {
-  "name": "copy-of-radio-iqra---la-voix-du-saint-coran",
+  "name": "radio-iqra---la-voix-du-saint-coran",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^0.562.0",
+    "lucide-react": "^0.475.0",
     "d3": "^7.9.0",
     "@google/genai": "^1.35.0",
     "react": "^19.2.3",

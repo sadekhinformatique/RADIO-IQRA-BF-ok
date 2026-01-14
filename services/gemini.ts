@@ -3,7 +3,18 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { Inspiration } from "../types";
 
 export const fetchDailyInspiration = async (): Promise<Inspiration> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+  // Safe check for process.env.API_KEY
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+  
+  if (!apiKey) {
+    console.warn("API_KEY non trouvée, utilisation du mode dégradé.");
+    return {
+      text: "La connaissance est une lumière que Dieu place dans le cœur de qui Il veut.",
+      source: "Sagesse Islamique"
+    };
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response = await ai.models.generateContent({
@@ -22,8 +33,11 @@ export const fetchDailyInspiration = async (): Promise<Inspiration> => {
       }
     });
 
-    const result = JSON.parse(response.text);
-    return result as Inspiration;
+    const result = JSON.parse(response.text || "{}");
+    return {
+      text: result.text || "La connaissance est une lumière.",
+      source: result.source || "Sagesse Islamique"
+    };
   } catch (error) {
     console.error("Gemini Error:", error);
     return {
