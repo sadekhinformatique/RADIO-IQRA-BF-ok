@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Radio Iqra - La Voix du Saint Coran",
+  "description": "Une application web élégante pour écouter la Radio Iqra (96.1 MHz), la voix du Saint Coran. Inclut un lecteur audio haute fidélité, un visualiseur dynamique et des inspirations quotidiennes générées par l'IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
